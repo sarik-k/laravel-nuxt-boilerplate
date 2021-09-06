@@ -18,7 +18,7 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [],
+  css: ["~/assets/scss/main.scss"],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [],
@@ -26,20 +26,62 @@ export default {
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
 
+  components: {
+    dirs: ["~/components", "~/components/header"]
+  },
+
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     // https://go.nuxtjs.dev/eslint
     // '@nuxtjs/eslint-module'
+    "@nuxtjs/tailwindcss"
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/axios
-    "@nuxtjs/axios"
+    "@nuxtjs/axios",
+    "@nuxtjs/auth-next",
+    "@nuxtjs/toast"
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {},
+  axios: {
+    // baseURL: "http://localhost:8000/",
+    prefix: "http://localhost:8000/",
+    proxy: true,
+    credentials: true
+  },
+
+  proxy: {
+    "/laravel": {
+      target: "http://localhost:8000/",
+      pathRewrite: { "^/laravel": "/" }
+    }
+  },
+
+  auth: {
+    strategies: {
+      laravelSanctum: {
+        provider: "laravel/sanctum",
+        url: "http://localhost:8000",
+        endpoints: {
+          login: {
+            url: "/api/login"
+          },
+          logout: {
+            url: "/api/logout"
+          }
+        }
+      }
+    }
+  },
+
+  toast: {
+    duration: 3500,
+    position: "bottom-right",
+    keepOnHover: true
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {}

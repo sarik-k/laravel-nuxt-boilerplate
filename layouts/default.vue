@@ -1,22 +1,15 @@
 <template>
   <div>
-    The Header Section
-    <nuxt-link :to="{ name: 'videos' }">Videos</nuxt-link>
-    <Nuxt />
-    The Footer Section
+    <TheHeader></TheHeader>
+    <Nuxt class="max-w-screen-xl mx-auto" />
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  name: "default",
+};
 </script>
 
-<style scoped lang="scss">
-h1 {
-  color: blueviolet;
-}
-
-.nuxt-link-active {
-  color: red;
-}
+<style lang="scss">
 </style>
