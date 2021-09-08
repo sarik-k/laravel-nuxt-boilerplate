@@ -22,7 +22,9 @@
         />
       </div>
       <div class="form-group">
-        <nuxt-link :to="{ name: 'auth-forgot' }">Forgot Password?</nuxt-link>
+        <nuxt-link :to="{ name: 'auth-forgot-password' }"
+          >Forgot Password?</nuxt-link
+        >
       </div>
       <div class="form-group">
         <button type="submit" class="px-3 py-2 bg-green-500">Login</button>
@@ -43,8 +45,8 @@ export default {
   data() {
     return {
       form: {
-        email: "sarik.codewing@gmail.com",
-        password: "password",
+        email: null,
+        password: null,
       },
       errors: [],
     };

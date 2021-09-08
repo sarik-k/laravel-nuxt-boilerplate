@@ -3,7 +3,7 @@
     src="https://nuxtjs.org/logos/nuxtjs-typo.svg"
     height="25px"
     alt="Logo"
-    class="h-6"
+    class="h-6 px-6"
   />
 </template>
 

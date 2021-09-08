@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,9 +15,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    $path = base_path('/client/dist/index.html');
-
-    abort_unless(file_exists($path), 400, 'Make sure to run npm run build!');
-
-    return file_get_contents($path);
 });
+
+// https://github.com/laravel/fortify/commit/7b909a52b23e1aaedcfaf5b5707a1887235c7d91
+
+Route::get('/reset-password/{token}', function ($token, Request $request) {
+    return redirect(config('app.spa_url') . 'auth/reset-password/' . $token . '?email=' . $request->query('email'));
+})->middleware('guest')->name('password.reset');

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container mx-auto p-4">
     <form @submit.prevent="register()">
       <div class="form-group">
         <label for="name"> Name: </label>
